@@ -31,7 +31,7 @@ using namespace glm;
 #include <common/Shader.hpp>
 #include <common/Texture.hpp>
 #include <common/Object.hpp>
-#include <common/ColorShader.hpp>
+#include <common/MTLShader.hpp> //Why would they add this line. common/ColorShader.hpp
 #include <common/Scene.hpp>
 #include <common/Triangle.hpp>
 #include <common/BasicMaterialShader.hpp>
