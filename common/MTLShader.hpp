@@ -44,6 +44,9 @@ class MTLShader: public Shader{
         //! setSpecular
         /*! Set the specular color */
         void setSpecular(glm::vec3 specular);
+        //! setShininess
+        /*! Set the Specular Exponent */
+        void setShininess(float shininess);
         //! setOpacity
         /*! Set amount of opacity */
         void setOpacity(float opacity);
@@ -64,6 +67,7 @@ class MTLShader: public Shader{
         GLuint m_TextureID;     //!< texture id
         GLuint m_lightPosID;    //!< id of the position of the light source
         glm::vec3 m_lightPos;   //!< position of the light source
+        float m_shininess; //!< Specular Exponent
         float m_opacity;        //!< opacity of the material
 	
     

@@ -28,11 +28,7 @@ MTLShader::~MTLShader(){
 }
 
 void MTLShader::setUpShaderParameters(){
-     glUseProgram(programID);
-    /*m_lightPos = glm::vec3(4,4,4);
-    m_lightPosID = glGetUniformLocation(programID, "lightPosWorldspace");
-    glUniform3f(m_lightPosID, m_lightPos.x, m_lightPos.y, m_lightPos.z);
-    m_TextureID  = glGetUniformLocation(programID, "myTextureSampler");*/
+    glUseProgram(programID);
 	m_diffuseColor = glm::vec4(1.0);
     GLint diffusecolorID = glGetUniformLocation(programID, "diffuseColor");
     glProgramUniform4fv(programID,diffusecolorID,1, &m_diffuseColor[0]);
@@ -73,14 +69,22 @@ void MTLShader::setAmbient(glm::vec3 ambient){
 void MTLShader::setSpecular(glm::vec3 specular){
     
     m_specularColor= glm::vec4(specular[0],specular[1],specular[2],1.0);
-    GLint specularcolorID = glGetUniformLocation(programID, "specularColor");
+    GLint specularcolorID = glGetUniformLocation(programID, "shininess");
     glProgramUniform4fv(programID, specularcolorID, 1, &m_specularColor[0]);
 	
+}
+
+void MTLShader::setShininess(float shininess) {
+    m_shininess = shininess;
+    GLint shininessID = glGetUniformLocation(programID, "shininess");
+    glProgramUniform1f(programID, shininessID, m_shininess);
 }
 
 void MTLShader::setOpacity(float opacity){
     
     m_opacity= opacity;
+    GLint opacityID = glGetUniformLocation(programID, "opacity");
+    glProgramUniform1f(programID, opacityID, m_opacity);
 	
 }
 

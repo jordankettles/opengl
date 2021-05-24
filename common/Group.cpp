@@ -70,6 +70,7 @@ void Group::setupShaders(){
             mtlshader->setDiffuse(mat->getDiffuseColour());
             mtlshader->setAmbient(mat->getAmientColour());
             mtlshader->setSpecular(mat->getSpecularColour());
+            mtlshader->setShininess(mat->getShininess());
             mtlshader->setOpacity(mat->getOpacity());
             mat->setShader(mtlshader);
             if(mat->getTextureName()!=""){

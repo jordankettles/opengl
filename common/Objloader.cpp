@@ -94,6 +94,7 @@ bool loadOBJMTL(
         if(scene->mMaterials[i]!=NULL){
         float shininessStrength = 0.0;
         scene->mMaterials[i]->Get( AI_MATKEY_SHININESS_STRENGTH, shininessStrength );
+		newMat->setShininess(shininessStrength);
         
         aiString texpath;
         if (scene->mMaterials[i]->GetTexture(aiTextureType_DIFFUSE, 0, &texpath, NULL, NULL, NULL, NULL, NULL) == AI_SUCCESS) {

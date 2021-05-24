@@ -17,11 +17,10 @@ uniform vec3 lightPositionWorldSpace;
 uniform vec4 diffuseColor;
 uniform vec4 ambientColor;
 uniform vec4 specularColor;
-uniform float specularExponent; //shininess
+uniform float shininess;
+uniform float opacity;
 
 void main(){
-	//Light Colour
-    vec4 lightColor = vec4(1, 1, 1, 1);
 
     vec4 textureVal = texture(myTextureSampler, UV);
     //Distance to the light
@@ -43,15 +42,17 @@ void main(){
     //Enusre that the reflection is visible.
     float cosAlpha = clamp(dot(E, R), 0, 1);
 
-    vec3 diffuseComponent = (textureVal * lightColor * cosTheta).rgb;
+    vec3 diffuseComponent = (textureVal * diffuseColor * cosTheta).rgb;
     vec3 ambientComponent = (ambientColor * textureVal).rgb;
-    //dont know why dividing by 4???? 19th may
-    vec3 specularComponent = (specularColor * lightColor).rgb * pow(cosAlpha, specularExponent/4.0);
+    vec3 specularComponent = (textureVal * specularColor).rgb * pow(cosAlpha, shininess);
 
+    /*float diffuseAlpha = (textureVal * diffuseColor * cosTheta).a;
+    float ambientAlpha = (ambientColor * textureVal).a;
+    float specularAlpha = textureVal * specularColor).a * pow(cosAlpha, shininess);*/
+
+    color.a = opacity;
     color.rgb = ambientComponent + diffuseComponent + specularComponent;
-	// Material properties
-	//TODO: compute light model here
-    //calculate alpha separately
-    color.a = 1.0;
+	//TODO:implement blinn-phong
+    //     implement special effect shader (Toon, Sepia, Black-and- White (BW))
     
 }
