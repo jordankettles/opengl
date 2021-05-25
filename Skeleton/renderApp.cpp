@@ -104,9 +104,10 @@ int main( int argc, char *argv[] )
     glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
     // Enable depth test
     glEnable(GL_DEPTH_TEST);
-    // Enable opacity
+    // Enable Blending.
     glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);//is this equation correct?
+    // Blend function.
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     // Accept fragment if it closer to the camera than the former one
     glDepthFunc(GL_LESS);
     
@@ -159,6 +160,31 @@ int main( int argc, char *argv[] )
         }
     }
     
+    //add code for render to texture here.
+    GLuint MyFramebuffer = 0;
+    glGenFramebuffers(1, &MyFramebuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, MyFramebuffer);
+
+    //Texture to render to.
+    GLuint textureBeforeEffect;
+    glGenTextures(1, &textureBeforeEffect);
+    //Bind the texture.
+    glBindTexture(GL_TEXTURE_2D, textureBeforeEffect);
+
+    //check framebuffer is ok.
+
+    //Create a quad to render the framebuffer texture to the screen.
+
+
+    //set something.
+	glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, textureBeforeEffect, 0);
+    //Check the frame buffer is ok.
+    if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
+        return 0;
+    }
+
+    //create a quad.
+    //create a shader for the quad?
     
     Camera* myCamera = new Camera();
     myCamera->setPosition(glm::vec3(0,100,200)); //set camera to show the models
@@ -171,10 +197,13 @@ int main( int argc, char *argv[] )
     //Render loop
     while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS && glfwWindowShouldClose(window) == 0 ){// Clear the screen
         
+        //Render to my Frame Buffer.
+        glBindFramebuffer(GL_FRAMEBUFFER, MyFramebuffer);
+
         // Measure speed
 		double currentTime = glfwGetTime();
 		nbFrames++;
-		if ( currentTime - lastTime >= 1.0 ){ // If last prinf() was more than 1sec ago
+		if ( currentTime - lastTime >= 1.0 ){ // If last printf() was more than 1sec ago
 			// printf and reset
 			printf("%f ms/frame\n", 1000.0/double(nbFrames));
 			nbFrames = 0;
@@ -188,6 +217,12 @@ int main( int argc, char *argv[] )
         myControls->update();
         // takes care of all the rendering automatically
         myScene->render(myCamera);
+
+        if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS) {
+            //set render mode.
+            ;
+        }
+
         
         // Swap buffers
         glfwSwapBuffers(window);

@@ -91,6 +91,8 @@ void MTLShader::setOpacity(float opacity){
 void MTLShader::setRenderMode(float renderMode){
     
     m_renderMode= renderMode;
+    GLint renderModeID = glGetUniformLocation(programID, "renderMode");
+    glProgramUniform1f(programID, renderModeID, m_renderMode);
  
 }
 

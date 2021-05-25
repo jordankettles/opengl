@@ -19,6 +19,7 @@ uniform vec4 ambientColor;
 uniform vec4 specularColor;
 uniform float shininess;
 uniform float opacity;
+uniform float renderMode;
 
 void main(){
 
@@ -33,26 +34,22 @@ void main(){
     //Ensure that the normal is visible.
     float cosTheta = clamp(dot(n,l), 0, 1);
 
-    //Eye vector
-    vec3 E = normalize(eyeDirectionCameraSpace);
+    //View direction vector
+    vec3 V = normalize(eyeDirectionCameraSpace);
 
-    //Direction in which light is reflected
-    vec3 R = reflect(-l, n);
+    //Halfway vector
+    vec3 H = normalize(l+V);
 
     //Enusre that the reflection is visible.
-    float cosAlpha = clamp(dot(E, R), 0, 1);
+    float cosAlpha = clamp(dot(H, n), 0, 1);
 
     vec3 diffuseComponent = (textureVal * diffuseColor * cosTheta).rgb;
     vec3 ambientComponent = (ambientColor * textureVal).rgb;
     vec3 specularComponent = (textureVal * specularColor).rgb * pow(cosAlpha, shininess);
 
-    /*float diffuseAlpha = (textureVal * diffuseColor * cosTheta).a;
-    float ambientAlpha = (ambientColor * textureVal).a;
-    float specularAlpha = textureVal * specularColor).a * pow(cosAlpha, shininess);*/
-
     color.a = opacity;
     color.rgb = ambientComponent + diffuseComponent + specularComponent;
-	//TODO:implement blinn-phong
-    //     implement special effect shader (Toon, Sepia, Black-and- White (BW))
+	//TODO:
+    // implement special effect shader (Toon, Sepia, Black-and- White (BW))
     
 }
