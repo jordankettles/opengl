@@ -8,35 +8,53 @@ uniform sampler2D myTextureSampler;
 uniform float renderMode;
 uniform float time;
 
-vec4 effect1(vec2 UV) {
-    return texture(myTextureSampler, UV);
+const float PI = 3.1415926535;
+
+vec4 wobbly(vec2 UV) {
+    //Black and white motion wobble.
+    float R = texture(myTextureSampler, UV+0.02*vec2(sin(time+UV.x),cos(time+UV.y))).r/(3);
+    float G = texture(myTextureSampler, UV+0.01*vec2(sin(time+UV.x),cos(time+UV.y))).g/(3);
+    float B = texture(myTextureSampler, UV+0.01*vec2(sin(time+UV.x),cos(time+UV.y))).b/(3);
+    return vec4(R+G+B, R+G+B, R+G+B, 1); 
 }
 
-vec4 effect2(vec2 UV) {
-    return texture(myTextureSampler, UV);
+vec4 fisheye(vec2 UV) {
+    // Fisheye effect that zooms in and out.
+    float aperture = 128.0+(40*sin(time));
+    float apertureHalf = 0.5 * aperture * (PI / 180.0);
+    float maxFactor = sin(apertureHalf);
+    
+    vec2 coords;
+    vec2 xy = 2.0 * UV.xy - 1.0;
+    float d = length(xy);
+    if (d < (2.0-maxFactor)) {
+        d = length(xy * maxFactor);
+        float z = sqrt(1.0 - d * d);
+        float r = atan(d, z) / PI;
+        float phi = atan(xy.y, xy.x);
+        coords.x = r * cos(phi) + 0.5;
+        coords.y = r * sin(phi) + 0.5;
+    } else {
+        coords = UV.xy;
+    }
+    return texture(myTextureSampler, coords);
 }
 
 vec4 effect3(vec2 UV) {
-    return texture(myTextureSampler, UV);
+    return texture( myTextureSampler, UV + 0.005*vec2( sin(time+1024.0*UV.x),sin((time)+768.0*UV.y)) );
 }
 
 void main(){
     if (renderMode == 2.0) {
-        color.rgb = texture( myTextureSampler, UV + 0.005*vec2( sin(time+1024.0*UV.x),cos(time+768.0*UV.y)) ).rgb;
-        // color.rgb = effect1(UV).rgb;
-        ;
+        // Zooming Fisheye effect.
+        color.rgb = fisheye(UV).rgb;
     } else if (renderMode == 3.0) {
-        // color.rgb = effect2(UV).rgb;
-        ;
-    } else if (renderMode == 4.0) {
-        // color.rgb = effect2(UV).rgb;
-        ;
+        // Black and white + wobbly effect.
+        color.rgb = wobbly(UV).rgb;
     } else {
-        // Render mode is equal to 1.0
-        // No effect.
+        // Render mode is equal to 1.0, no effect.
         color.rgb = texture(myTextureSampler, UV).rgb;
     }
     // Alpha is always 1.
     color.a = 1.0;
-    //write some cool effects here.
 }

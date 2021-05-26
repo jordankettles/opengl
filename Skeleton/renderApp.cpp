@@ -31,7 +31,7 @@ using namespace glm;
 #include <common/Shader.hpp>
 #include <common/Texture.hpp>
 #include <common/Object.hpp>
-#include <common/MTLShader.hpp> //Why would they add this line. common/ColorShader.hpp
+#include <common/MTLShader.hpp>
 #include <common/Scene.hpp>
 #include <common/Triangle.hpp>
 #include <common/BasicMaterialShader.hpp>
@@ -164,13 +164,12 @@ int main( int argc, char *argv[] )
             }
         }
     }
-    
-    //add code for render to texture here.
-    //Create a frame buffer called my Framebuffer
-    GLuint MyFramebuffer = 0;
-    glGenFramebuffers(1, &MyFramebuffer);
+
+    //Create a frame buffer called my Framebuffer to render the first pass to.
+    GLuint myFramebuffer = 0;
+    glGenFramebuffers(1, &myFramebuffer);
     //Bind my frame buffer.
-    glBindFramebuffer(GL_FRAMEBUFFER, MyFramebuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, myFramebuffer);
 
     // Create a texture to render to.
     GLuint textureBeforeEffect;
@@ -213,7 +212,7 @@ int main( int argc, char *argv[] )
 
 
     //create my Quad.
-    Quad* outputQuad = new Quad();
+    Quad* myOutputQuad = new Quad();
     
     Camera* myCamera = new Camera();
     myCamera->setPosition(glm::vec3(0,100,200)); //set camera to show the models
@@ -227,7 +226,7 @@ int main( int argc, char *argv[] )
     while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS && glfwWindowShouldClose(window) == 0 ){// Clear the screen
         
         //Render to my Frame Buffer.
-        glBindFramebuffer(GL_FRAMEBUFFER, MyFramebuffer);
+        glBindFramebuffer(GL_FRAMEBUFFER, myFramebuffer);
         glViewport(0,0, windowWidth, windowHeight);
 
         // Measure speed
@@ -241,7 +240,7 @@ int main( int argc, char *argv[] )
 		}
         
         // Clear the screen
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Also clear the depth buffer!!!
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
         // update camera controls with mouse input
         myControls->update();
@@ -253,29 +252,28 @@ int main( int argc, char *argv[] )
         glViewport(0, 0, windowWidth, windowHeight);
 
         // Clear the screen
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Also clear the depth buffer!!!
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS) {
             // Turn effect off.
             postShader->setRenderMode(1.0);
         }
         if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS) {
-            // Turn on blank effect.
+            // Turn on Fisheye effect.
             postShader->setRenderMode(2.0);
         }
         if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS) {
-            // Turn on blank effect.
+            // Turn on Wobbly effect.
             postShader->setRenderMode(3.0);
         }
-        if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS) {
-            // Turn on blank effect.
-            postShader->setRenderMode(4.0);
-        }
+        // Set the time.
         postShader->setTime((float) currentTime*10.0f);
+        // Bind the post effect shader.
         postShader->bind();
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, textureBeforeEffect);
-        outputQuad->directRender();
+        //Final render.
+        myOutputQuad->directRender();
 
         // Swap buffers
         glfwSwapBuffers(window);
