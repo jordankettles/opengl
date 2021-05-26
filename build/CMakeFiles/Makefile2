@@ -197,7 +197,7 @@ CMakeFiles/Skeleton.dir/all: external/assimp-3.0.1270/contrib/zlib/CMakeFiles/zl
 CMakeFiles/Skeleton.dir/all: external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Skeleton.dir/build.make CMakeFiles/Skeleton.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Skeleton.dir/build.make CMakeFiles/Skeleton.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jordankettles/Documents/Github/opengl/opengl/build/CMakeFiles --progress-num=2,3,4,5,6,7,8 "Built target Skeleton"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jordankettles/Documents/Github/opengl/opengl/build/CMakeFiles --progress-num=2,3,4,5,6,7,8,9 "Built target Skeleton"
 .PHONY : CMakeFiles/Skeleton.dir/all
 
 # Build rule for subdir invocation for target.
@@ -332,12 +332,12 @@ external/assimp-3.0.1270/contrib/zlib/CMakeFiles/zlib.dir/clean:
 external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/all: external/assimp-3.0.1270/contrib/zlib/CMakeFiles/zlib.dir/all
 	$(MAKE) $(MAKESILENT) -f external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/build.make external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/depend
 	$(MAKE) $(MAKESILENT) -f external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/build.make external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jordankettles/Documents/Github/opengl/opengl/build/CMakeFiles --progress-num=9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85 "Built target assimp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jordankettles/Documents/Github/opengl/opengl/build/CMakeFiles --progress-num=10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85 "Built target assimp"
 .PHONY : external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/all
 
 # Build rule for subdir invocation for target.
 external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jordankettles/Documents/Github/opengl/opengl/build/CMakeFiles 83
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jordankettles/Documents/Github/opengl/opengl/build/CMakeFiles 82
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jordankettles/Documents/Github/opengl/opengl/build/CMakeFiles 0
 .PHONY : external/assimp-3.0.1270/code/CMakeFiles/assimp.dir/rule

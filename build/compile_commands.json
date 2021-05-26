@@ -60,6 +60,11 @@
   "file": "/home/jordankettles/Documents/Github/opengl/opengl/common/Controls.cpp"
 },
 {
+  "directory": "/home/jordankettles/Documents/Github/opengl/opengl/build",
+  "command": "/usr/bin/c++ -DGLEW_STATIC -DTW_NO_DIRECT3D -DTW_NO_LIB_PRAGMA -DTW_STATIC -DUSE_ASSIMP -D_CRT_SECURE_NO_WARNINGS -I/home/jordankettles/Documents/Github/opengl/opengl/external/glfw-3.1.2/include/GLFW -I/home/jordankettles/Documents/Github/opengl/opengl/external/glm-0.9.7.1 -I/home/jordankettles/Documents/Github/opengl/opengl/external/glew-1.13.0/include -I/home/jordankettles/Documents/Github/opengl/opengl/external/assimp-3.0.1270/include -I/home/jordankettles/Documents/Github/opengl/opengl/.  -o CMakeFiles/Skeleton.dir/common/Quad.cpp.o -c /home/jordankettles/Documents/Github/opengl/opengl/common/Quad.cpp",
+  "file": "/home/jordankettles/Documents/Github/opengl/opengl/common/Quad.cpp"
+},
+{
   "directory": "/home/jordankettles/Documents/Github/opengl/opengl/build/external",
   "command": "/usr/bin/x86_64-redhat-linux-gcc-11 -DASSIMP_BUILD_BOOST_WORKAROUND -DGLEW_STATIC -DTW_NO_DIRECT3D -DTW_NO_LIB_PRAGMA -DTW_STATIC -D_CRT_SECURE_NO_WARNINGS -I/home/jordankettles/Documents/Github/opengl/opengl/external/glfw-3.1.2/include/GLFW -I/home/jordankettles/Documents/Github/opengl/opengl/external/glew-1.13.0/include -I/home/jordankettles/Documents/Github/opengl/opengl/external/assimp-3.0.1270/code/BoostWorkaround -g -o CMakeFiles/GLEW_1130.dir/glew-1.13.0/src/glew.c.o -c /home/jordankettles/Documents/Github/opengl/opengl/external/glew-1.13.0/src/glew.c",
   "file": "/home/jordankettles/Documents/Github/opengl/opengl/external/glew-1.13.0/src/glew.c"

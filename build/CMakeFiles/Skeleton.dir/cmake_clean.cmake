@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Skeleton.dir/common/Mesh.cpp.o"
   "CMakeFiles/Skeleton.dir/common/Object.cpp.o"
   "CMakeFiles/Skeleton.dir/common/Objloader.cpp.o"
+  "CMakeFiles/Skeleton.dir/common/Quad.cpp.o"
   "CMakeFiles/Skeleton.dir/common/Scene.cpp.o"
   "CMakeFiles/Skeleton.dir/common/Shader.cpp.o"
   "CMakeFiles/Skeleton.dir/common/Texture.cpp.o"

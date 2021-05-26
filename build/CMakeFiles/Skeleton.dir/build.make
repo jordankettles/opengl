@@ -232,6 +232,19 @@ CMakeFiles/Skeleton.dir/common/Controls.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Skeleton.dir/common/Controls.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jordankettles/Documents/Github/opengl/opengl/common/Controls.cpp -o CMakeFiles/Skeleton.dir/common/Controls.cpp.s
 
+CMakeFiles/Skeleton.dir/common/Quad.cpp.o: CMakeFiles/Skeleton.dir/flags.make
+CMakeFiles/Skeleton.dir/common/Quad.cpp.o: ../common/Quad.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordankettles/Documents/Github/opengl/opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Skeleton.dir/common/Quad.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Skeleton.dir/common/Quad.cpp.o -c /home/jordankettles/Documents/Github/opengl/opengl/common/Quad.cpp
+
+CMakeFiles/Skeleton.dir/common/Quad.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Skeleton.dir/common/Quad.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jordankettles/Documents/Github/opengl/opengl/common/Quad.cpp > CMakeFiles/Skeleton.dir/common/Quad.cpp.i
+
+CMakeFiles/Skeleton.dir/common/Quad.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Skeleton.dir/common/Quad.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jordankettles/Documents/Github/opengl/opengl/common/Quad.cpp -o CMakeFiles/Skeleton.dir/common/Quad.cpp.s
+
 # Object files for target Skeleton
 Skeleton_OBJECTS = \
 "CMakeFiles/Skeleton.dir/Skeleton/renderApp.cpp.o" \
@@ -245,7 +258,8 @@ Skeleton_OBJECTS = \
 "CMakeFiles/Skeleton.dir/common/Material.cpp.o" \
 "CMakeFiles/Skeleton.dir/common/Group.cpp.o" \
 "CMakeFiles/Skeleton.dir/common/Objloader.cpp.o" \
-"CMakeFiles/Skeleton.dir/common/Controls.cpp.o"
+"CMakeFiles/Skeleton.dir/common/Controls.cpp.o" \
+"CMakeFiles/Skeleton.dir/common/Quad.cpp.o"
 
 # External object files for target Skeleton
 Skeleton_EXTERNAL_OBJECTS =
@@ -262,6 +276,7 @@ Skeleton: CMakeFiles/Skeleton.dir/common/Material.cpp.o
 Skeleton: CMakeFiles/Skeleton.dir/common/Group.cpp.o
 Skeleton: CMakeFiles/Skeleton.dir/common/Objloader.cpp.o
 Skeleton: CMakeFiles/Skeleton.dir/common/Controls.cpp.o
+Skeleton: CMakeFiles/Skeleton.dir/common/Quad.cpp.o
 Skeleton: CMakeFiles/Skeleton.dir/build.make
 Skeleton: /usr/lib64/libGL.so
 Skeleton: /usr/lib64/libGLU.so
@@ -284,7 +299,7 @@ Skeleton: /usr/lib64/libGL.so
 Skeleton: /usr/lib64/libGLU.so
 Skeleton: external/assimp-3.0.1270/contrib/zlib/libz.a
 Skeleton: CMakeFiles/Skeleton.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jordankettles/Documents/Github/opengl/opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable Skeleton"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jordankettles/Documents/Github/opengl/opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable Skeleton"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Skeleton.dir/link.txt --verbose=$(VERBOSE)
 	/usr/bin/cmake -E copy /home/jordankettles/Documents/Github/opengl/opengl/build/./Skeleton /home/jordankettles/Documents/Github/opengl/opengl/Skeleton/
 

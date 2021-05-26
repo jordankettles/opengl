@@ -39,6 +39,7 @@ using namespace glm;
 #include <common/Controls.hpp>
 #include <common/Group.hpp>
 #include <common/Objloader.hpp>
+#include <common/Quad.hpp>
 
 
 
@@ -161,27 +162,30 @@ int main( int argc, char *argv[] )
     }
     
     //add code for render to texture here.
+    //Create a frame buffer called my Framebuffer
     GLuint MyFramebuffer = 0;
     glGenFramebuffers(1, &MyFramebuffer);
+    //Bind my frame buffer.
     glBindFramebuffer(GL_FRAMEBUFFER, MyFramebuffer);
 
-    //Texture to render to.
+    // Create a texture to render to.
     GLuint textureBeforeEffect;
     glGenTextures(1, &textureBeforeEffect);
     //Bind the texture.
     glBindTexture(GL_TEXTURE_2D, textureBeforeEffect);
 
-    //check framebuffer is ok.
+    //Give an empty image to OpenGL?
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 1024, 768, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
 
-    //Create a quad to render the framebuffer texture to the screen.
-
-
-    //set something.
+    //set textureBeforeEffect to color attachment 0.
 	glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, textureBeforeEffect, 0);
     //Check the frame buffer is ok.
     if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
         return 0;
     }
+
+    Quad* outputQuad = new Quad();
+    MTLShader* postShader = new MTLShader("mtlShader");
 
     //create a quad.
     //create a shader for the quad?
@@ -218,10 +222,21 @@ int main( int argc, char *argv[] )
         // takes care of all the rendering automatically
         myScene->render(myCamera);
 
+        // Render to the screen
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+        // Clear the screen
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Also clear the depth buffer!!!
+
         if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS) {
-            //set render mode.
-            ;
+            postShader->setRenderMode(2.0);
         }
+        postShader->bind();
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, textureBeforeEffect);
+        postShader->setRenderMode(1.0);
+        outputQuad->directRender();
+
 
         
         // Swap buffers

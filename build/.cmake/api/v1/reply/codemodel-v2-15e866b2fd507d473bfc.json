@@ -1,0 +1,207 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.6"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "external",
+					"childIndexes" : 
+					[
+						2,
+						4,
+						5
+					],
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.6"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "external",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "external/glfw-3.1.2",
+					"childIndexes" : 
+					[
+						3
+					],
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8.12"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "external/glfw-3.1.2",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "external/glfw-3.1.2/src",
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8.12"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "external/glfw-3.1.2/src",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "external/assimp-3.0.1270/contrib/zlib",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.6"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "external/assimp-3.0.1270/contrib/zlib",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "external/assimp-3.0.1270/code",
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.6"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "external/assimp-3.0.1270/code",
+					"targetIndexes" : 
+					[
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						4,
+						5
+					],
+					"name" : "COSC_Assignment_OpenGL",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						5
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2,
+						3
+					],
+					"name" : "GLFW",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "GLEW_1130::@89556154f30252d09d22",
+					"jsonFile" : "target-GLEW_1130-Debug-47ac74b333583482daec.json",
+					"name" : "GLEW_1130",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Skeleton::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Skeleton-Debug-cd5fc1f3a5d636e9325c.json",
+					"name" : "Skeleton",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "assimp::@fd34c06cfae9bc0e2791",
+					"jsonFile" : "target-assimp-Debug-214febae2e53ddcc36ec.json",
+					"name" : "assimp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "glfw::@160694664b387c03da1c",
+					"jsonFile" : "target-glfw-Debug-0a3f72a57fcae671ef38.json",
+					"name" : "glfw",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "uninstall::@27f92cc50d0fa9119448",
+					"jsonFile" : "target-uninstall-Debug-5d6fc005916e010dbb27.json",
+					"name" : "uninstall",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "zlib::@a7644ee3d8b06da981e1",
+					"jsonFile" : "target-zlib-Debug-fa4547ff1a6e9fe9d67d.json",
+					"name" : "zlib",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/jordankettles/Documents/Github/opengl/opengl/build",
+		"source" : "/home/jordankettles/Documents/Github/opengl/opengl"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 2
+	}
+}

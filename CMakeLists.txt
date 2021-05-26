@@ -79,6 +79,8 @@ common/Objloader.hpp
 common/Objloader.cpp
 common/Controls.hpp
 common/Controls.cpp
+common/Quad.hpp
+common/Quad.cpp
 
 Skeleton/mtlShader.frag
 Skeleton/mtlShader.vert

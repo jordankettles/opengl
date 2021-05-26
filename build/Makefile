@@ -496,6 +496,33 @@ common/Objloader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Skeleton.dir/build.make CMakeFiles/Skeleton.dir/common/Objloader.cpp.s
 .PHONY : common/Objloader.cpp.s
 
+common/Quad.o: common/Quad.cpp.o
+
+.PHONY : common/Quad.o
+
+# target to build an object file
+common/Quad.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Skeleton.dir/build.make CMakeFiles/Skeleton.dir/common/Quad.cpp.o
+.PHONY : common/Quad.cpp.o
+
+common/Quad.i: common/Quad.cpp.i
+
+.PHONY : common/Quad.i
+
+# target to preprocess a source file
+common/Quad.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Skeleton.dir/build.make CMakeFiles/Skeleton.dir/common/Quad.cpp.i
+.PHONY : common/Quad.cpp.i
+
+common/Quad.s: common/Quad.cpp.s
+
+.PHONY : common/Quad.s
+
+# target to generate assembly for a file
+common/Quad.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Skeleton.dir/build.make CMakeFiles/Skeleton.dir/common/Quad.cpp.s
+.PHONY : common/Quad.cpp.s
+
 common/Scene.o: common/Scene.cpp.o
 
 .PHONY : common/Scene.o
@@ -622,6 +649,9 @@ help:
 	@echo "... common/Objloader.o"
 	@echo "... common/Objloader.i"
 	@echo "... common/Objloader.s"
+	@echo "... common/Quad.o"
+	@echo "... common/Quad.i"
+	@echo "... common/Quad.s"
 	@echo "... common/Scene.o"
 	@echo "... common/Scene.i"
 	@echo "... common/Scene.s"

@@ -93,14 +93,14 @@ void MTLShader::setRenderMode(float renderMode){
     m_renderMode= renderMode;
     GLint renderModeID = glGetUniformLocation(programID, "renderMode");
     glProgramUniform1f(programID, renderModeID, m_renderMode);
- 
+    m_TextureID = glGetUniformLocation(programID, "myTextureSampler");
+    glUniform1i(m_TextureID, 0);
 }
 
 
 void MTLShader::bind(){
-    // Use our shader
+    // Use our shadermtlshader
     glUseProgram(programID);
-    // Bind our texture in Texture Unit 0
     if(m_texture!=NULL){
         m_texture->bindTexture();
         // Set our "myTextureSampler" sampler to user Texture Unit 0 using glUniform1i
