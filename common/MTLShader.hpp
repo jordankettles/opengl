@@ -53,6 +53,9 @@ class MTLShader: public Shader{
         //! setRenderMode
         /*! Set the render mode.*/
         void setRenderMode(float renderMode);
+        //! setTime
+        /*! Set the time.*/
+        void setTime(float time);
         //! bind
         /*! Bind the shader */
         void bind();

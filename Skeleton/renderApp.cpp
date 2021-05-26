@@ -208,6 +208,8 @@ int main( int argc, char *argv[] )
     }
 
     MTLShader* postShader = new MTLShader("passthrough.vert", "specialeffect.frag");
+    //No effect.
+    postShader->setRenderMode(1.0);
 
 
     //create my Quad.
@@ -254,13 +256,25 @@ int main( int argc, char *argv[] )
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Also clear the depth buffer!!!
 
         if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS) {
+            // Turn effect off.
+            postShader->setRenderMode(1.0);
+        }
+        if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS) {
+            // Turn on blank effect.
             postShader->setRenderMode(2.0);
         }
+        if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS) {
+            // Turn on blank effect.
+            postShader->setRenderMode(3.0);
+        }
+        if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS) {
+            // Turn on blank effect.
+            postShader->setRenderMode(4.0);
+        }
+        postShader->setTime((float) currentTime*10.0f);
         postShader->bind();
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, textureBeforeEffect);
-        postShader->bind();
-        postShader->setRenderMode(1.0);
         outputQuad->directRender();
 
         // Swap buffers
