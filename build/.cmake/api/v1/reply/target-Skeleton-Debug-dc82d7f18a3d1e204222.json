@@ -37,7 +37,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 88,
+				"line" : 90,
 				"parent" : 0
 			},
 			{
@@ -67,7 +67,7 @@
 			{
 				"command" : 4,
 				"file" : 0,
-				"line" : 92,
+				"line" : 94,
 				"parent" : 0
 			},
 			{
@@ -366,7 +366,9 @@
 			"sourceIndexes" : 
 			[
 				25,
-				26
+				26,
+				27,
+				28
 			]
 		}
 	],
@@ -518,6 +520,16 @@
 		{
 			"backtrace" : 1,
 			"path" : "Skeleton/mtlShader.vert",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Skeleton/passthrough.vert",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Skeleton/specialeffect.frag",
 			"sourceGroupIndex" : 2
 		}
 	],

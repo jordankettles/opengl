@@ -196,10 +196,6 @@ int main( int argc, char *argv[] )
     //set textureBeforeEffect to color attachment 0.
 	glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, textureBeforeEffect, 0);
 
-    /*// Create a list of draw buffers.
-    GLenum DrawBuffers[1] = {GL_COLOR_ATTACHMENT0};
-    glDrawBuffers(1, DrawBuffers); // "1" is the size of DrawBuffers	*/
-
     
     //Check the frame buffer is ok.
     if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
@@ -207,7 +203,7 @@ int main( int argc, char *argv[] )
     }
 
     MTLShader* postShader = new MTLShader("passthrough.vert", "specialeffect.frag");
-    //No effect.
+    //Start with no effect.
     postShader->setRenderMode(1.0);
 
 

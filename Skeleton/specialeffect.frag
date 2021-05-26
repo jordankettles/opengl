@@ -8,7 +8,7 @@ uniform sampler2D myTextureSampler;
 uniform float renderMode;
 uniform float time;
 
-const float PI = 3.1415926535;
+const float PI = 3.1415926535; //Digits of pi for the fisheye effect.
 
 vec4 wobbly(vec2 UV) {
     //Black and white motion wobble.
@@ -38,10 +38,6 @@ vec4 fisheye(vec2 UV) {
         coords = UV.xy;
     }
     return texture(myTextureSampler, coords);
-}
-
-vec4 effect3(vec2 UV) {
-    return texture( myTextureSampler, UV + 0.005*vec2( sin(time+1024.0*UV.x),sin((time)+768.0*UV.y)) );
 }
 
 void main(){

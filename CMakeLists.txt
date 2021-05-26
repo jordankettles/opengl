@@ -84,6 +84,8 @@ common/Quad.cpp
 
 Skeleton/mtlShader.frag
 Skeleton/mtlShader.vert
+Skeleton/passthrough.vert
+Skeleton/specialeffect.frag
 )
 target_link_libraries(Skeleton
 ${ALL_LIBS}
