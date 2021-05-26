@@ -42,7 +42,6 @@ using namespace glm;
 #include <common/Quad.hpp>
 
 
-
 bool initWindow(std::string windowName){
     
     // Initialise GLFW
@@ -114,6 +113,11 @@ int main( int argc, char *argv[] )
     
     // Cull triangles which normal is not towards the camera
     glEnable(GL_CULL_FACE);
+
+    int windowWidth = 1024;
+	int windowHeight = 768;
+	// Get the size of the window in case we are using MacOS.
+	glfwGetFramebufferSize(window, &windowWidth, &windowHeight);
     
     
     //create a Vertex Array Object and set it as the current one
@@ -174,26 +178,45 @@ int main( int argc, char *argv[] )
     //Bind the texture.
     glBindTexture(GL_TEXTURE_2D, textureBeforeEffect);
 
-    //Give an empty image to OpenGL?
+    //Give an empty image to OpenGL to render the texture to.
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 1024, 768, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
+
+    // Poor filtering 
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		
+    // Dont forget the depth buffer otherwise depth testing will fail
+    GLuint depthrenderbuffer;
+    glGenRenderbuffers(1, &depthrenderbuffer);
+    glBindRenderbuffer(GL_RENDERBUFFER, depthrenderbuffer);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, windowWidth, windowHeight);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthrenderbuffer);
 
     //set textureBeforeEffect to color attachment 0.
 	glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, textureBeforeEffect, 0);
+
+    /*// Create a list of draw buffers.
+    GLenum DrawBuffers[1] = {GL_COLOR_ATTACHMENT0};
+    glDrawBuffers(1, DrawBuffers); // "1" is the size of DrawBuffers	*/
+
+    
     //Check the frame buffer is ok.
     if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
         return 0;
     }
 
-    Quad* outputQuad = new Quad();
-    MTLShader* postShader = new MTLShader("mtlShader");
+    MTLShader* postShader = new MTLShader("passthrough.vert", "specialeffect.frag");
 
-    //create a quad.
-    //create a shader for the quad?
+
+    //create my Quad.
+    Quad* outputQuad = new Quad();
     
     Camera* myCamera = new Camera();
     myCamera->setPosition(glm::vec3(0,100,200)); //set camera to show the models
     Controls* myControls = new Controls(myCamera);
-    myControls->setSpeed(30);
+    myControls->setSpeed(60);
     
     // For speed computation
 	double lastTime = glfwGetTime();
@@ -203,6 +226,7 @@ int main( int argc, char *argv[] )
         
         //Render to my Frame Buffer.
         glBindFramebuffer(GL_FRAMEBUFFER, MyFramebuffer);
+        glViewport(0,0, windowWidth, windowHeight);
 
         // Measure speed
 		double currentTime = glfwGetTime();
@@ -224,6 +248,7 @@ int main( int argc, char *argv[] )
 
         // Render to the screen
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glViewport(0, 0, windowWidth, windowHeight);
 
         // Clear the screen
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Also clear the depth buffer!!!
@@ -234,11 +259,10 @@ int main( int argc, char *argv[] )
         postShader->bind();
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, textureBeforeEffect);
+        postShader->bind();
         postShader->setRenderMode(1.0);
         outputQuad->directRender();
 
-
-        
         // Swap buffers
         glfwSwapBuffers(window);
         glfwPollEvents();
