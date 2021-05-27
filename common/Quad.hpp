@@ -1,14 +1,11 @@
 /*
- * Quad.hpp
- *
- *  Class for a simple quad.
- *  by Stefanie Zollmann
- *
+ *  Quad.hpp
+ *  Quad Class.
+ *  Has a direct render method for RTT.
  */
 #ifndef QUAD_HPP
 #define QUAD_HPP
 
-// Include GLM
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/quaternion.hpp>
@@ -20,33 +17,31 @@
 
 //!  Quad.
 /*!
- Basic quad class that represents a quad and defines it rendering
+ Basic quad class that represents a quad and defines it rendering.
  */
 class Quad:  public Object{
     
     public:
         //! Default constructor
-        /*! Setting up default quad. */
+        /*! Create quad. */
         Quad();
         //! Destructor
         /*! Delete quad. */
         ~Quad();
         //! init
-        /*! Setting up default quad. */
+        /*! Initialise quad. */
         void init();
         //! render
-        /*! Render default quad. */
+        /*! Render quad. */
         void render(Camera* camera);
         //! directRender
-        /*! Direct rendering function that doesnt take camera into account. */
+        /*! Direct rendering function used for Render to Texture.*/
         void directRender();
-    
     
     private:
         
         GLfloat g_vertex_buffer_data[18];
         GLuint vertexbuffer;
-    
 };
 
 
